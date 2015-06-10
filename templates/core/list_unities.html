@@ -1,0 +1,27 @@
+{% extends "core/base.html" %}
+
+{% block title %}
+	Listagem das Unidades
+{% endblock title %}
+
+{% block content %}
+	{% if unidades %}
+		<ul class="collection">
+			{% for unidade in unidades %}
+				<li class="collection-item">
+					{{ unidade.nome }}
+					<ul>
+						<li>
+							Quantidade: {{ unidade.desbravador.count }}
+						</li>
+					</ul>
+				</li>
+			{% endfor %}
+		</ul>
+	{% else %}
+		<p>
+			Nenhuma unidade foi cadastrada.
+		</p>
+	{% endif %}
+	<a class="btn" href="{% url 'index' %}">Home</a>
+{% endblock content %}

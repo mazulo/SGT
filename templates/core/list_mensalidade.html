@@ -1,0 +1,28 @@
+{% extends "core/base.html" %}
+
+{% block title %}
+	Listagem dos desbravadores
+{% endblock title %}
+
+{% block content %}
+	{% if mensalidade %}
+		<ul class="pure-menu-list">
+			<li class="pure-menu-item">
+				<p class="flow-text">{{ mensalidade.desbravador.nome }}</p>
+				<ul class="pure-menu-list">
+					<li class="pure-menu-item">
+						{% if mensalidade.status_pagamento %}
+							<p class="flow-text">Mensalidade do mês paga.</p>
+						{% else %}
+							<p>Mensalidade do mês não paga.</p>
+						{% endif %}
+					</li>
+				</ul>
+			</li>
+		</ul>
+	{% else %}
+		Não existe mensalidade para este desbravador.
+	{% endif %}
+	<a class="btn" href="{% url 'core:list_dbvs' %}">Voltar</a>
+	<a class="btn" href="{% url 'index' %}">Home</a>
+{% endblock content %}

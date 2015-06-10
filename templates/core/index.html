@@ -1,0 +1,19 @@
+{% extends "core/base.html" %}
+
+{% block title %}
+	Página Inicial - SGT
+{% endblock title %}
+
+{% block content %}
+	<p class="black-text flow-text center">
+		Bem vindo ao sistema de gerenciamento de Tesouraria <span>Clube de Desbravadores Guardiões</span>.
+	</p>
+	<ul class="collection">
+		<li class="collection-item">
+			<a  href="{% url 'core:list_dbvs' %}"><i class="mdi-editor-format-list-bulleted"></i>Listar desbravadores</a>
+		</li>
+		<li class="collection-item">
+			<a href="{% url 'core:list_unidades' %}"><i class="mdi-editor-format-list-bulleted"></i>Listar unidades</a>
+		</li>
+	</ul>
+{% endblock content %}

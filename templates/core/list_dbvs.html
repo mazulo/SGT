@@ -1,0 +1,25 @@
+{% extends "core/base.html" %}
+
+{% block title %}
+	Listagem dos desbravadores
+{% endblock title %}
+
+{% block content %}
+	{% if dbvs %}
+		<ul class="collection">
+			{% for dbv in dbvs %}
+				<li class="collection-item">
+					{{ dbv.nome }} | {{ dbv.unidade }}
+					<ul>
+						<li>
+							<a class="btn" href="{% url 'core:list_mensalidade' dbv.username %}">Verificar mensalidade</a>
+						</li>
+					</ul>
+				</li>	
+			{% endfor %}
+		</ul>
+	{% else %}
+		<p class="flow-text">Ainda não foram cadastrados desbravadores</p>
+	{% endif %}
+	<a class="btn" href="{% url 'index' %}">Home</a>
+{% endblock content %}

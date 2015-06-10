@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head lang="pt-BR">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
+	<title>
+		{% block title %}Sistema de Gerenciamento de Tesouraria{% endblock title %}
+	</title>
+</head>
+<body class="grey lighten-3">
+	<section>
+		<div class="container">
+			{% block content %}{% endblock content %}
+		</div>
+	</section>
+	<footer>
+		{% block footer %}{% endblock footer %}
+	</footer>
+	<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+</body>
+</html>
