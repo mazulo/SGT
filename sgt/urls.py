@@ -15,10 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from core.views import index
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^core/', include('core.urls', namespace='core')),
-    url(r'^$', index, name='index'),
+    url(r'^$', include('sgt.core.urls', namespace='core')),
+    url(r'^accounts/', include('sgt.accounts.urls', namespace='accounts')),
 ]

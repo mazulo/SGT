@@ -1,4 +1,4 @@
-{% extends "core/base.html" %}
+{% extends "base.html" %}
 
 {% block title %}
 	Página Inicial - SGT
@@ -10,10 +10,12 @@
 	</p>
 	<ul class="collection">
 		<li class="collection-item">
-			<a  href="{% url 'core:list_dbvs' %}"><i class="mdi-editor-format-list-bulleted"></i>Listar desbravadores</a>
+			<a  href=""><i class="mdi-editor-format-list-bulleted"></i>Listar desbravadores</a>
 		</li>
 		<li class="collection-item">
-			<a href="{% url 'core:list_unidades' %}"><i class="mdi-editor-format-list-bulleted"></i>Listar unidades</a>
+			<a href=""><i class="mdi-editor-format-list-bulleted"></i>Listar unidades</a>
 		</li>
 	</ul>
+	<p><a href="{% url 'accounts:register' %}" class="waves-effect waves-light btn-large">Criar conta</a></p>
+	<p><a href="{% url 'accounts:login' %}" class="waves-effect waves-light btn-large">Login</a></p>
 {% endblock content %}

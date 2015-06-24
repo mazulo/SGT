@@ -39,7 +39,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core',
+    'sgt.core',
+    'sgt.accounts',
     'djcelery',
 )
 
@@ -116,7 +117,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # User
-AUTH_USER_MODEL = 'core.CustomUser'
+AUTH_USER_MODEL = 'accounts.UserDbv'
 
 # djcelery settings
 djcelery.setup_loader()

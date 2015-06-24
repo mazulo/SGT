@@ -1,5 +1,5 @@
 from django.contrib import admin
-from core.models import Desbravador, Unidade, Mensalidade
+from sgt.core.models import Unidade, Mensalidade
 
 
 class MensalidadeInline(admin.TabularInline):
@@ -8,13 +8,6 @@ class MensalidadeInline(admin.TabularInline):
 
     def has_add_permission(self, request):
         return True
-
-
-@admin.register(Desbravador)
-class DesbravadorAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'idade', 'unidade', 'cargo')
-    list_filter = ('nome', 'unidade')
-    inlines = [MensalidadeInline, ]
 
 
 @admin.register(Unidade)

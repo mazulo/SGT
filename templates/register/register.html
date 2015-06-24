@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h2>Informe seus dados de cadastro</h2>
+	<form method="post">
+		{% csrf_token %}
+		<fieldset>
+			{{ form.non_field_errors }}
+			<div>
+				{% for field in form %}
+					<div>
+						{{ field.label_tag }}
+						{{ field }}
+						{{ field.errors }}
+					</div>
+				{% endfor %}
+				<div class="input-field col s03">
+					<button class="btn waves-effect waves-light">Cadastrar</button>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+	<p>
+		<a href="{% url 'core:index' %}" title="">Home</a> <br />
+	</p>
+{% endblock content %}
