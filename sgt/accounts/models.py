@@ -6,7 +6,9 @@ from django.contrib.auth.models import (
 )
 from django.core import validators
 
-from sgt.core.models import Unidade
+from datetime import datetime
+from sgt.core.models import Team, Payment
+from sgt.celery import app
 
 
 class UserDbvManager(BaseUserManager):
@@ -88,7 +90,7 @@ class UserDbv(AbstractBaseUser, PermissionsMixin):
     profile_image = models.ImageField(
         upload_to='dbv_profile_images', blank=True
     )
-    group = models.ForeignKey(Unidade, related_name='desbravadores', null=True)
+    team = models.ForeignKey(Team, related_name='dbvs', null=True)
     position = models.CharField(max_length=100, choices=CARGO_CHOICES)
 
     objects = UserDbvManager()
@@ -102,5 +104,18 @@ class UserDbv(AbstractBaseUser, PermissionsMixin):
     def get_full_name(self):
         return str(self)
 
+    def choice_verbose(self):
+        return dict(CARGO_CHOICES).get(self.position, 'Sem cargo')
+
     def __str__(self):
         return '{} {}'.format(self.first_name, self.last_name)
+
+    def is_debtor(self):
+        for p in self.payments.all():
+            print(p)
+            if not p.status_payment or not p:
+                return True
+            else:
+                continue
+        return False
+    is_debtor.boolean = True

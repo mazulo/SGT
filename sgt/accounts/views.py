@@ -1,14 +1,18 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import (
     authenticate,
-    login as django_login, logout as django_logout
+    login as django_login, logout as django_logout,
+    get_user_model
 )
+from django.contrib.auth.decorators import login_required
+from .forms import RegistrationForm, AuthenticationForm, EditUserDbvForm
 
-from .forms import RegistrationForm, AuthenticationForm
+
+User = get_user_model()
 
 
 def login(request):
-    template_name = 'register/login.html'
+    template_name = 'accounts/login.html'
     context_dict = {}
     if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)
@@ -19,7 +23,7 @@ def login(request):
             )
             if user is not None:
                 django_login(request, user)
-                return redirect('core:index')
+                return redirect('accounts:dashboard')
     else:
         form = AuthenticationForm()
     context_dict['form'] = form
@@ -27,7 +31,7 @@ def login(request):
 
 
 def register(request):
-    template_name = 'register/register.html'
+    template_name = 'accounts/register.html'
     context_dict = {}
     if request.method == 'POST':
         form = RegistrationForm(data=request.POST)
@@ -43,3 +47,33 @@ def register(request):
 def logout(request):
     django_logout(request)
     return redirect('core:index')
+
+
+@login_required
+def dashboard(request):
+    template_name = 'accounts/dashboard.html'
+    return render(request, template_name)
+
+
+@login_required
+def edit(request):
+    context = {}
+    template_name = 'accounts/edit.html'
+    if request.method == 'POST':
+        form = EditUserDbvForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('accounts:dashboard')
+    else:
+        form = EditUserDbvForm(instance=request.user)
+    context['form'] = form
+    return render(request, template_name, context)
+
+
+def list_dbvs(request):
+    template_name = 'core/list_dbvs.html'
+    dbvs = User.objects.all().exclude(is_admin=True)
+    context_dict = {
+        'dbvs': dbvs
+    }
+    return render(request, template_name, context_dict)

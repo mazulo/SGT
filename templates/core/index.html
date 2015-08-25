@@ -5,17 +5,17 @@
 {% endblock title %}
 
 {% block content %}
-	<p class="black-text flow-text center">
-		Bem vindo ao sistema de gerenciamento de Tesouraria <span>Clube de Desbravadores Guardiões</span>.
-	</p>
-	<ul class="collection">
-		<li class="collection-item">
-			<a  href=""><i class="mdi-editor-format-list-bulleted"></i>Listar desbravadores</a>
-		</li>
-		<li class="collection-item">
-			<a href=""><i class="mdi-editor-format-list-bulleted"></i>Listar unidades</a>
-		</li>
-	</ul>
-	<p><a href="{% url 'accounts:register' %}" class="waves-effect waves-light btn-large">Criar conta</a></p>
-	<p><a href="{% url 'accounts:login' %}" class="waves-effect waves-light btn-large">Login</a></p>
+	<div id="welcome">
+		<h1>
+			Bem vindo ao sistema de gerenciamento de Tesouraria <span>Clube de Desbravadores Guardiões</span>
+		</h1>
+	</div>
+	<div id="account">
+		{% if user.is_authenticated %}
+			<a class="btn" href="{% url 'accounts:dashboard' %}">Acessar perfil</a>
+		{% else %}
+			<a id="btn_account" class="btn" href="{% url 'accounts:register' %}">Criar conta</a>
+			<a id="btn_login" class="btn" href="{% url 'accounts:login' %}">Login</a>
+		{% endif %}
+	</div>
 {% endblock content %}

@@ -3,23 +3,19 @@
 <html>
 <head lang="pt-BR">
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="{% static 'css/style.css' %}">
-	<link rel="stylesheet" href="{% static 'css/pure-min.css' %}">
-	<link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+	<link rel="stylesheet/less" href="{% static 'css/style.less' %}">
 	<title>
 		{% block title %}Sistema de Gerenciamento de Tesouraria{% endblock title %}
 	</title>
 </head>
-<body class="grey lighten-3">
-	<section>
-		<div class="container">
+<body>
+	<section id="wrapper">
+		<div id="container">
 			{% block content %}{% endblock content %}
 		</div>
 	</section>
 	<footer>
-		{% block footer %}{% endblock footer %}
 	</footer>
-	<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
-	<script type="text/javascript" src="{% static 'js/yui-min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/less.js' %}"></script>
 </body>
 </html>

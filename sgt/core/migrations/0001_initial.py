@@ -13,29 +13,29 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Mensalidade',
+            name='Payment',
             fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, primary_key=True, verbose_name='ID')),
-                ('mes', models.DateField()),
-                ('status_pagamento', models.BooleanField(default=False)),
-                ('desbravador', models.ForeignKey(to=settings.AUTH_USER_MODEL, related_name='mensalidades')),
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('month', models.DateField()),
+                ('status_payment', models.BooleanField(default=False)),
+                ('dbv', models.ForeignKey(related_name='payments', to=settings.AUTH_USER_MODEL)),
             ],
             options={
-                'verbose_name_plural': 'Mensalidades',
-                'ordering': ['mes'],
-                'verbose_name': 'Mensalidade',
+                'verbose_name': 'Payment',
+                'verbose_name_plural': 'Payments',
+                'ordering': ['month'],
             },
         ),
         migrations.CreateModel(
-            name='Unidade',
+            name='Team',
             fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, primary_key=True, verbose_name='ID')),
-                ('nome', models.CharField(max_length=100)),
-                ('historia', models.TextField(blank=True)),
-                ('imagem_perfil', models.ImageField(blank=True, upload_to='unity_profile_images')),
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=100)),
+                ('history', models.TextField(blank=True)),
+                ('profile_image', models.ImageField(upload_to='unity_profile_images', blank=True)),
             ],
             options={
-                'ordering': ['nome'],
+                'ordering': ['name'],
             },
         ),
     ]

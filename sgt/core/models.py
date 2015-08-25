@@ -2,31 +2,31 @@ from django.db import models
 from django.conf import settings
 
 
-class Mensalidade(models.Model):
-    mes = models.DateField()
-    desbravador = models.ForeignKey(
-        settings.AUTH_USER_MODEL, related_name='mensalidades'
+class Payment(models.Model):
+    month = models.DateField()
+    dbv = models.ForeignKey(
+        settings.AUTH_USER_MODEL, related_name='payments'
     )
-    status_pagamento = models.BooleanField(default=False)
+    status_payment = models.BooleanField(default=False)
 
     class Meta:
-        verbose_name = 'Mensalidade'
-        verbose_name_plural = 'Mensalidades'
-        ordering = ['mes']
+        verbose_name = 'Payment'
+        verbose_name_plural = 'Payments'
+        ordering = ['month']
 
     def __str__(self):
-        return ('{} - {}'.format(self.mes, self.desbravador))
+        return ('{} - {}'.format(self.month, self.dbv))
 
 
-class Unidade(models.Model):
-    nome = models.CharField(max_length=100)
-    historia = models.TextField(blank=True)
-    imagem_perfil = models.ImageField(
+class Team(models.Model):
+    name = models.CharField(max_length=100)
+    history = models.TextField(blank=True)
+    profile_image = models.ImageField(
         upload_to='unity_profile_images', blank=True
     )
 
     class Meta:
-        ordering = ['nome']
+        ordering = ['name']
 
     def __str__(self):
-        return self.nome
+        return self.name

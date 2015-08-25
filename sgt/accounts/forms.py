@@ -4,6 +4,7 @@ from django.contrib.auth.forms import (
 )
 
 from .models import UserDbv
+from django.conf import settings
 
 
 class CustomUserDbvCreationForm(UserCreationForm):
@@ -59,7 +60,7 @@ class CustomUserDbvChangeForm(UserChangeForm):
             'last_name',
             'age',
             'profile_image',
-            'group',
+            'team',
             'position'
         )
 
@@ -119,3 +120,10 @@ class AuthenticationForm(forms.Form):
 
     class Meta:
         fields = ['email', 'password']
+
+
+class EditUserDbvForm(forms.ModelForm):
+
+    class Meta:
+        model = UserDbv
+        fields = ['username', 'first_name', 'last_name', 'age']

@@ -1,0 +1,86 @@
+@import "mixins.less";
+@import "reset.less";
+
+
+section#wrapper {
+
+	div#container {
+		.content_center;
+
+		div#dashboard {
+			margin: 60px 0;
+
+			h1 {
+				font-size: 2em;
+				text-align: center;
+			}
+			p { margin-bottom: 30px; }
+		}
+
+		div#welcome {
+			margin: 60px 0;
+			h1 {
+				font-size: 2em;
+				text-align: center;
+
+				span {
+					display: block;
+					font-size: 1em;
+				}
+			}
+		}
+		div#account {
+			text-align: center;
+			a.btn {
+				color: #fff;
+				font-size: 1.2em;
+				margin-right: 20px;
+
+				&:last-child { margin-right: 0; }
+			}
+		}
+		div#wrapper_form {
+			margin: 60px 0;
+			h1 {
+				text-align: center;
+				font-size: 2em;
+				margin-bottom: 30px;
+			}
+			form {
+				background: #ccc;
+				color: #000;
+				box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5);
+				padding: 35px 0;
+
+				fieldset {
+					margin: 0 auto;
+					width: 500px;
+					position: relative;
+
+					div.form_field {
+						text-align: left;
+						margin-bottom: 10px;
+						overflow: hidden;
+						padding: 0 40px;
+						input {
+							box-sizing: border-box;
+							width: 200px;
+							height: 32px;
+							background: #fff;
+							font-size: 16px;
+							color: #252527;
+							font-weight: bold;
+							float: right;
+							margin-right: 30px;
+						}
+					}
+					button {
+						margin: 0 70px 0 auto;
+						width: 100px;
+						float: right;
+					}
+				}
+			}
+		}
+	}
+}

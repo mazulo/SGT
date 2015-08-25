@@ -116,8 +116,12 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-# User
+# Auth
+LOGIN_URL = 'accounts:login'
+LOGIN_REDIRECT_URL = 'accounts:dashboard'
+LOGOUT_URL = 'accounts:logout'
 AUTH_USER_MODEL = 'accounts.UserDbv'
+
 
 # djcelery settings
 djcelery.setup_loader()
@@ -127,11 +131,3 @@ BROKER_URL = 'amqp://guest:guest@localhost:5672//'
 CELERY_TIMEZONE = 'America/Fortaleza'
 
 CELERY_ALWAYS_EAGER = False
-
-CELERYBEAT_SCHEDULE = {
-    'run-every-10-seconds': {
-        'task': 'core.tasks.verifica_mensalidade',
-        'schedule': timedelta(seconds=10),
-        'args': ()
-    }
-}

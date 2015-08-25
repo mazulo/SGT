@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.core.urlresolvers import reverse
-from django.views.generic.edit import FormView
-from django.contrib.auth import login
+# from django.core.urlresolvers import reverse
+# from django.views.generic.edit import FormView
+# from django.contrib.auth import login
+# from django.contrib.auth.decorators import login_required
 
 # from .models import Unidade, Mensalidade
 

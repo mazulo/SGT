@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+	<div id="wrapper_form">
+		<h1>Atualize seus dados</h1>
+		<form method="post" action="{% url 'accounts:edit' %}">
+			{% csrf_token %}
+			<fieldset>
+				{{ form.non_field_errors }}
+				{% for field in form %}
+					<div class="form_field">
+						{{ field.label_tag }}
+						{{ field }}
+						{{ field.errors }}
+					</div>
+				{% endfor %}
+				<button class="btn" type="submit">Atualizar</button>
+			</fieldset>
+		</form>
+	</div>
+{% endblock content %}

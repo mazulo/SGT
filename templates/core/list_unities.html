@@ -6,9 +6,9 @@
 
 {% block content %}
 	{% if unidades %}
-		<ul class="collection">
+		<ul>
 			{% for unidade in unidades %}
-				<li class="collection-item">
+				<li>
 					{{ unidade.nome }}
 					<ul>
 						<li>
@@ -23,5 +23,5 @@
 			Nenhuma unidade foi cadastrada.
 		</p>
 	{% endif %}
-	<a class="btn" href="{% url 'index' %}">Home</a>
+	<a href="{% url 'index' %}">Home</a>
 {% endblock content %}

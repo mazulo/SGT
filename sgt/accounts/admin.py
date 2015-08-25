@@ -2,15 +2,29 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
 from .models import UserDbv
+from sgt.core.models import Payment
 from .forms import CustomUserDbvChangeForm, CustomUserDbvCreationForm
+
+
+class PaymentAdmin(admin.TabularInline):
+
+    model = Payment
+    extra = 0
+
+    def has_add_permission(self, request):
+        return True
 
 
 class UserDbvAdmin(UserAdmin):
 
     form = CustomUserDbvChangeForm
     add_form = CustomUserDbvCreationForm
-
-    list_display = ('username', 'email', 'is_staff', 'is_superuser')
+    inlines = [
+        PaymentAdmin
+    ]
+    list_display = (
+        'username', 'email', 'is_staff', 'is_superuser', 'is_debtor'
+    )
     list_filter = ('is_superuser',)
 
     fieldsets = (
@@ -24,7 +38,7 @@ class UserDbvAdmin(UserAdmin):
                 'last_name',
                 'age',
                 'profile_image',
-                'group',
+                'team',
                 'position')}
         ),
         (

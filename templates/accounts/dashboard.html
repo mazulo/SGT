@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<div id="dashboard">
+		{% if user.first_name %}
+			<h1>Bem vindo, {{ user.first_name }}</h1>
+		{% else %}
+			<h1>Bem vindo, {{ user.email }}</h1>
+		{% endif %}
+		<div id="info_dbv">
+			<p>Unidade: {{ user.team }}</p>
+			<p>Cargo: {{ user.get_position_display }}</p>
+			<p>
+				{% if user.payments.all %}
+					Você está devendo {{ user.payments.all.count }} mensalidade{{ user.payments.all.count|pluralize:"s" }}.
+				{% else %}
+					Você não está devendo nenhuma mensalidade.
+				{% endif %}
+			</p>
+		</div>
+
+		<div id="menu_option">
+			<p><a class="btn" href="{% url 'accounts:edit' %}">Editar meu perfil</a></p>
+			<p><a class="btn" href="{% url 'accounts:logout' %}">Logout</a></p>
+		</div>
+	</div>
+{% endblock content %}

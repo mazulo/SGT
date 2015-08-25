@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+	<div id="wrapper_form">
+		<h1>Informe seus dados de login</h1>
+		<form method="post" action="{% url 'accounts:login' %}">
+			{% csrf_token %}
+			<fieldset>
+				{{ form.non_field_errors }}
+				{% for field in form %}
+					<div class="form_field">
+						{{ field.label_tag }}
+						{{ field }}
+						{{ field.errors }}
+					</div>
+				{% endfor %}
+				<button class="btn" type="submit">Entrar</button>
+			</fieldset>
+		</form>
+	</div>
+	<p>
+		Não é cadastrado? <a href="{% url 'accounts:register' %}">Cadastre-se</a> <br />
+	</p>
+	<p>
+		<a href="{% url 'core:index' %}">Home</a> <br />
+	</p>
+{% endblock content %}

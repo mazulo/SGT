@@ -1,18 +1,7 @@
 from django.contrib import admin
-from sgt.core.models import Unidade, Mensalidade
+from sgt.core.models import Team
 
 
-class MensalidadeInline(admin.TabularInline):
-    model = Mensalidade
-    extra = 0
-
-    def has_add_permission(self, request):
-        return True
-
-
-@admin.register(Unidade)
-class UnidadeAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'historia')
-
-
-admin.site.register(Mensalidade)
+@admin.register(Team)
+class TeamAdmin(admin.ModelAdmin):
+    list_display = ('name', 'history')
