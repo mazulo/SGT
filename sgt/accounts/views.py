@@ -52,7 +52,10 @@ def logout(request):
 @login_required
 def dashboard(request):
     template_name = 'accounts/dashboard.html'
-    return render(request, template_name)
+    context_dict = {
+        'payments': request.user.payments.all()
+    }
+    return render(request, template_name, context_dict)
 
 
 @login_required
@@ -71,9 +74,19 @@ def edit(request):
 
 
 def list_dbvs(request):
-    template_name = 'core/list_dbvs.html'
+    template_name = 'accounts/list_dbvs.html'
     dbvs = User.objects.all().exclude(is_admin=True)
     context_dict = {
         'dbvs': dbvs
     }
+    return render(request, template_name, context_dict)
+
+
+def dbv_view(request, pk):
+    template_name = 'accounts/dbv.html'
+    context_dict = {}
+    dbv = User.objects.get(pk=pk)
+    payments = dbv.payments.all().count()
+    context_dict['dbv'] = dbv
+    context_dict['payments'] = payments
     return render(request, template_name, context_dict)

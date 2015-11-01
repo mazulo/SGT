@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Desbravador {{ dbv.username }}
+{% endblock title %}
+
+{% block content %}
+	<p>Nome: {{ dbv.get_full_name }}</p>
+	<p>Email: {{ dbv.email }}</p>
+	<p>Idade: {{ dbv.age }}</p>
+	<p>Unidade: {{ dbv.team }}</p>
+	<p>Cargo: {{ dbv.get_position_display }}</p>
+	<p>Mensalidade: {{ payments }}</p>
+{% endblock content %}

@@ -11,8 +11,8 @@
 			<p>Unidade: {{ user.team }}</p>
 			<p>Cargo: {{ user.get_position_display }}</p>
 			<p>
-				{% if user.payments.all %}
-					Você está devendo {{ user.payments.all.count }} mensalidade{{ user.payments.all.count|pluralize:"s" }}.
+				{% if payments %}
+					Você está devendo {{ payments.all.count }} mensalidade{{ payments.all.count|pluralize:"s" }}.
 				{% else %}
 					Você não está devendo nenhuma mensalidade.
 				{% endif %}

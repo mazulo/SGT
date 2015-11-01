@@ -12,7 +12,9 @@
 					{{ dbv.username }} | {{ dbv.email }}
 					<ul>
 						<li>
-							<a href="">Verificar mensalidade</a>
+							<a href="{% url 'accounts:dbv_view' dbv.pk %}">
+								Verificar mensalidade
+							</a>
 						</li>
 					</ul>
 				</li>

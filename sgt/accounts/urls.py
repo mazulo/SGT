@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^logout/$', 'sgt.accounts.views.logout', name='logout'),
     url(r'^edit/$', 'sgt.accounts.views.edit', name='edit'),
     url(r'^list-dbvs/$', 'sgt.accounts.views.list_dbvs', name='list_dbvs'),
+    url(r'^dbv/(?P<pk>\d+)/', 'sgt.accounts.views.dbv_view', name='dbv_view')
 ]
