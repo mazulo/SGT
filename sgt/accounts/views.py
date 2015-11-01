@@ -6,6 +6,7 @@ from django.contrib.auth import (
 )
 from django.contrib.auth.decorators import login_required
 from .forms import RegistrationForm, AuthenticationForm, EditUserDbvForm
+from .utils import is_admin_test
 
 
 User = get_user_model()
@@ -14,6 +15,8 @@ User = get_user_model()
 def login(request):
     template_name = 'accounts/login.html'
     context_dict = {}
+    if request.user.is_authenticated:
+        return redirect('accounts:dashboard')
     if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)
         if form.is_valid():
@@ -73,7 +76,11 @@ def edit(request):
     return render(request, template_name, context)
 
 
+@login_required
 def list_dbvs(request):
+    result = is_admin_test(request.user)
+    if result is not None:
+        return result
     template_name = 'accounts/list_dbvs.html'
     dbvs = User.objects.all().exclude(is_admin=True)
     context_dict = {
@@ -82,7 +89,11 @@ def list_dbvs(request):
     return render(request, template_name, context_dict)
 
 
+@login_required
 def dbv_view(request, pk):
+    result = is_admin_test(request.user)
+    if result is not None:
+        return result
     template_name = 'accounts/dbv.html'
     context_dict = {}
     dbv = User.objects.get(pk=pk)

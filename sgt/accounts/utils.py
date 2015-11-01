@@ -1,3 +1,5 @@
+from django.shortcuts import redirect
+
 from sgt.core.models import Payment
 from sgt.accounts.models import UserDbv
 from datetime import datetime
@@ -19,3 +21,10 @@ def create_payment(pk):
         print(new)
     else:
         print("não devedor")
+
+
+def is_admin_test(user):
+    if user.is_admin:
+        return
+    else:
+        return redirect('accounts:dashboard')
