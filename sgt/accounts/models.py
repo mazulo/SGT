@@ -6,9 +6,7 @@ from django.contrib.auth.models import (
 )
 from django.core import validators
 
-from datetime import datetime
-from sgt.core.models import Team, Payment
-from sgt.celery import app
+from sgt.core.models import Team
 
 
 class UserDbvManager(BaseUserManager):
@@ -47,6 +45,7 @@ CARGO_CHOICES = (
     ('DRT', 'Diretor(a)'),
     ('DRT_AS', 'Diretor(a) Associado(a)'),
     ('CPL', 'Capel(ã)o'),
+    ('DBV', 'Desbravador(a)'),
 )
 
 
@@ -111,11 +110,22 @@ class UserDbv(AbstractBaseUser, PermissionsMixin):
         return '{} {}'.format(self.first_name, self.last_name)
 
     def is_debtor(self):
-        for p in self.payments.all():
-            print(p)
-            if not p.status_payment or not p:
-                return True
-            else:
-                continue
+        if not self.payments.all().count():
+            return True
+        else:
+            for p in self.payments.all():
+                if not p.status_payment:
+                    return True
+                else:
+                    continue
         return False
     is_debtor.boolean = True
+
+
+"""def post_save_payments(created, instance, **kwargs):
+    p = Payment.objects.create(month=datetime.now(), dbv=instance)
+    p.save()
+
+models.signals.post_save.connect(
+    post_save_payments, sender=UserDbv, dispatch_uid='post_save_payments'
+)"""

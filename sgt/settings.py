@@ -12,8 +12,8 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-import djcelery
-from datetime import timedelta
+# import djcelery
+# from datetime import timedelta
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -41,7 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'sgt.core',
     'sgt.accounts',
-    'djcelery',
+    # 'djcelery',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -124,10 +124,4 @@ AUTH_USER_MODEL = 'accounts.UserDbv'
 
 
 # djcelery settings
-djcelery.setup_loader()
-
-BROKER_URL = 'amqp://guest:guest@localhost:5672//'
-
-CELERY_TIMEZONE = 'America/Fortaleza'
-
-CELERY_ALWAYS_EAGER = False
+# djcelery.setup_loader()

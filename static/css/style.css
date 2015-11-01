@@ -1,0 +1,99 @@
+.content_center {
+  width: 960px;
+  margin: 0 auto;
+}
+.btn {
+  color: #fff;
+  background: #147eb6;
+  padding: 15px 10px;
+  border-radius: 10px;
+}
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-family: Arial, sans-serif, 14px;
+}
+ul {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+section#wrapper div#container {
+  width: 960px;
+  margin: 0 auto;
+}
+section#wrapper div#container div#dashboard {
+  margin: 60px 0;
+}
+section#wrapper div#container div#dashboard h1 {
+  font-size: 2em;
+  text-align: center;
+}
+section#wrapper div#container div#dashboard p {
+  margin-bottom: 30px;
+}
+section#wrapper div#container div#welcome {
+  margin: 60px 0;
+}
+section#wrapper div#container div#welcome h1 {
+  font-size: 2em;
+  text-align: center;
+}
+section#wrapper div#container div#welcome h1 span {
+  display: block;
+  font-size: 1em;
+}
+section#wrapper div#container div#account {
+  text-align: center;
+}
+section#wrapper div#container div#account a.btn {
+  color: #fff;
+  font-size: 1.2em;
+  margin-right: 20px;
+}
+section#wrapper div#container div#account a.btn:last-child {
+  margin-right: 0;
+}
+section#wrapper div#container div#wrapper_form {
+  margin: 60px 0;
+}
+section#wrapper div#container div#wrapper_form h1 {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 30px;
+}
+section#wrapper div#container div#wrapper_form form {
+  background: #ccc;
+  color: #000;
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5);
+  padding: 35px 0;
+}
+section#wrapper div#container div#wrapper_form form fieldset {
+  margin: 0 auto;
+  width: 500px;
+  position: relative;
+}
+section#wrapper div#container div#wrapper_form form fieldset div.form_field {
+  text-align: left;
+  margin-bottom: 10px;
+  overflow: hidden;
+  padding: 0 40px;
+}
+section#wrapper div#container div#wrapper_form form fieldset div.form_field input {
+  box-sizing: border-box;
+  width: 200px;
+  height: 32px;
+  background: #fff;
+  font-size: 16px;
+  color: #252527;
+  font-weight: bold;
+  float: right;
+  margin-right: 30px;
+}
+section#wrapper div#container div#wrapper_form form fieldset button {
+  margin: 0 70px 0 auto;
+  width: 100px;
+  float: right;
+}
