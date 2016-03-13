@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import CashInput, CashOutput
+
+
+admin.site.register(CashInput)
+admin.site.register(CashOutput)
