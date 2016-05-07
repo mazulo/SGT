@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'sgt.core',
     'sgt.accounts',
+    'sgt.cash_register',
     # 'djcelery',
 )
 
