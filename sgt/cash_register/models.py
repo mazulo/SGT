@@ -15,12 +15,12 @@ class CashValue(models.Model):
         )
     )
 
-    cash_value = models.DecimalField(
+    value = models.DecimalField(
         'Valor',
         max_digits=8,
         decimal_places=2
     )
-    date_value = models.DateField('Data', auto_now_add=True)
+    created = models.DateTimeField('Data', auto_now_add=True)
     # type_
     description = models.TextField('Descrição', blank=True)
     cash_flow = models.ForeignKey(
@@ -33,12 +33,16 @@ class CashValue(models.Model):
         abstract = True
 
     def __str__(self):
-        self.cash_value
+        self.value
 
 
 class CashInput(CashValue):
 
-    _type = models.CharField('Tipo de Entrada', choices=CashValue.TYPES[0])
+    _type = models.CharField(
+        'Tipo de Entrada',
+        max_length=1,
+        choices=CashValue.TYPES[0]
+    )
 
     class Meta:
         verbose_name = "Entrada de Dinheiro"
@@ -47,7 +51,11 @@ class CashInput(CashValue):
 
 class CashOutput(CashValue):
 
-    _type = models.CharField('Tipo de Entrada', choices=CashValue.TYPES[1])
+    _type = models.CharField(
+        'Tipo de Entrada',
+        max_length=1,
+        choices=CashValue.TYPES[1]
+    )
 
     class Meta:
         verbose_name = "Saída de Dinheiro"
@@ -56,7 +64,7 @@ class CashOutput(CashValue):
 
 class CashFlow(models.Model):
 
-    total_values = models.DecimalField(
+    total = models.DecimalField(
         'Valor',
         max_digits=8,
         decimal_places=2
